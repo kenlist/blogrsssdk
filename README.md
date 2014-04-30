@@ -1,0 +1,1 @@
+A cross-platform implementation for blog rss of [MyBlog](http://geekluo.com)
