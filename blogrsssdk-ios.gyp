@@ -20,8 +20,6 @@
         'DEAD_CODE_STRIPPING': 'NO',
         'LINK_WITH_STANDARD_LIBRARIES': 'NO',
         'MACH_O_TYPE': 'mh_object',
-        'INFOPLIST_FILE': 'ios/blogrsssdk-Info.plist',
-        'INFOPLIST_PATH': '$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/Info.plist',
         'WRAPPER_EXTENSION': 'framework',
         'CONTENTS_FOLDER_PATH': '$(WRAPPER_NAME)/Versions/$(FRAMEWORK_VERSION)',
         'UNLOCALIZED_RESOURCES_FOLDER_PATH': '$(CONTENTS_FOLDER_PATH)/Resources',
@@ -30,7 +28,6 @@
         'ios/blogrsssdk.h',
       ],
       'sources': [
-        'ios/blogrsssdk-Info.plist',
         'ios/blogrsssdk.h',
         'ios/blogrsssdk.m',
         'blogrsssdk-Prefix.pch'
