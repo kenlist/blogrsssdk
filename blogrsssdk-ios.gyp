@@ -31,8 +31,12 @@
       ],
       'sources': [
         'ios/blogrsssdk.h',
-        'ios/blogrsssdk.m',
-        'blogrsssdk-Prefix.pch'
+        'ios/blogrsssdk.mm',
+        'blogrsssdk-Prefix.pch',
+        'blogrss_session.h',
+        'blogrss_session.cc',
+        'thread_manager.h',
+        'thread_manager.cc',
       ],
       #for fake framework:
       'shell': {

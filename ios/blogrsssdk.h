@@ -8,6 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
-@interface blogrsssdk : NSObject
+//BlogRSSSDKDelegate
+@protocol BlogRSSSDKDelegate <NSObject>
+- (void)onRSSFetchedWithData:(NSArray *)rssData andIsSuccess:(BOOL)bSuccess;
+@end
+
+//BlogRSSSDK
+@interface BlogRSSSDK : NSObject
+
++ (BlogRSSSDK *)sharedSDK;
+
+- (BOOL)start;
+- (BOOL)stop;
+- (BOOL)fetchRSS;
+
+@property (nonatomic, strong) id<BlogRSSSDKDelegate> delegate;
 
 @end
