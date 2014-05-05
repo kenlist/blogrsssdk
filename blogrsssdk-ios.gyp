@@ -17,6 +17,8 @@
       'xcode_settings': {
         'VALID_ARCHS': ['armv7', 'armv7s'],
         'INSTALL_PATH': '$(BUILT_PRODUCTS_DIR)',
+        'GCC_PRECOMPILE_PREFIX_HEADER': 'YES',
+        'GCC_PREFIX_HEADER': 'blogrsssdk-Prefix.pch',
         'DEAD_CODE_STRIPPING': 'NO',
         'LINK_WITH_STANDARD_LIBRARIES': 'NO',
         'MACH_O_TYPE': 'mh_object',
