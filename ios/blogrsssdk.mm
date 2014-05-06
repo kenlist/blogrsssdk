@@ -30,6 +30,7 @@
     delete pExit_manager;
     pExit_manager = NULL;
   }
+  [super dealloc];
 }
 
 - (id)init {
