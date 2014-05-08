@@ -1,7 +1,7 @@
-#include "blogrss_responser.h"
-#include "blogrsssdk.h"
-#include "blogrsssdk+trigger.h"
-#include "rssinfoitem.h"
+#import "blogrss_responser.h"
+#import "blogrsssdk.h"
+#import "sdktrigger.h"
+#import "rssinfoitem.h"
 
 using namespace base;
 
@@ -18,5 +18,5 @@ void BlogRSSResponser::OnRSSFetched(int ret_code, blogrss::RSSInfo* rss_info) {
   
   RSSInfoItem* objc_rss_info = [[RSSInfoItem alloc] init];
   
-  [[BlogRSSSDK sharedSDK] TriggerRSSFetchedWithRetCode:ret_code andRSSInfo:nil];
+  [SDKTrigger TriggerRSSFetchedWithRetCode:ret_code andRSSInfo:nil];
 }

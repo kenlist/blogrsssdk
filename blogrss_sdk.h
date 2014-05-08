@@ -13,8 +13,9 @@ class BlogRSSSDK : public base::RefCountedThreadSafe<BlogRSSSDK> {
     
     BlogRSSSDK();
     ~BlogRSSSDK();
-    
-    bool Start();
+  
+    bool StartWithoutEnvInit();
+    bool Start(int argc, char** argv);
     bool FetchRSS();
   
     void set_delegate(base::WeakPtr<BlogRSSSDKDelegate> delegate) {

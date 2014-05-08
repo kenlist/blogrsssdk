@@ -17,10 +17,10 @@
       'sources': [
         'ios/blogrsssdk.h',
         'ios/blogrsssdk.mm',
-        'ios/blogrsssdk+trigger.h',
-        'ios/blogrsssdk+trigger.mm',
         'ios/blogrss_responser.h',
         'ios/blogrss_responser.mm',
+        'ios/sdktrigger.h',
+        'ios/sdktrigger.mm',
         'ios/rssinfoitem.h',
         'ios/rssinfoitem.mm',
       ],

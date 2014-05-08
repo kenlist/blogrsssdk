@@ -28,14 +28,14 @@
   return sdk;
 }
 
-- (BOOL)start {
+- (BOOL)startWithArgc:(int)argc andArgv:(char**)argv {
   if (exit_manager) {
     return NO;
   }
   exit_manager.reset(new base::AtExitManager);
   responser.reset(new BlogRSSResponser);
   blogrss::BlogRSSSDK::GetInstance()->set_delegate(responser->AsWeakPtr());
-  return blogrss::BlogRSSSDK::GetInstance()->Start();
+  return blogrss::BlogRSSSDK::GetInstance()->Start(argc, argv);
 }
 
 - (BOOL)stop {

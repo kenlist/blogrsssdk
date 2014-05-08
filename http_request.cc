@@ -82,8 +82,10 @@ bool HttpRequest::ConsumeBytesRead(net::URLRequest* request, int num_bytes) {
 void HttpRequest::OnResponseStarted(URLRequest* request) {
   DCHECK(MessageLoop::current()->type() == MessageLoop::TYPE_IO);
 
-  if (request->GetResponseCode() != 200)
+  if (request->GetResponseCode() != 200) {
     complete_callback_.Run(request->GetResponseCode(), "response code error");
+    return;
+  }
   
   ReadBody(request);
 }

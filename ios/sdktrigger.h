@@ -1,5 +1,5 @@
 //
-//  blogrssdk+trigger.h
+//  sdktrigger.h
 //  blogrsssdk-ios
 //
 //  Created by 罗 日健 on 5/8/14.
@@ -10,8 +10,8 @@
 #import "blogrss_responser.h"
 #import "rssinfoitem.h"
 
-@interface BlogRSSSDK (Trigger)
+@interface SDKTrigger
 
-- (void)TriggerRSSFetchedWithRetCode:(int)ret_code andRSSInfo:(NSArray *)rss_info;
++ (void)TriggerRSSFetchedWithRetCode:(int)ret_code andRSSInfo:(NSArray *)rss_info;
 
 @end

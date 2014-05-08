@@ -21,6 +21,8 @@
       'http_request.cc',
       'thread_manager.h',
       'thread_manager.cc',
+      'env_init.h',
+      'env_init.cc',
     ],
     'xcode_settings': {
       'VALID_ARCHS': ['armv7', 'armv7s'],

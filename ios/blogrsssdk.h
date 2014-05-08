@@ -18,7 +18,7 @@
 
 + (BlogRSSSDK *)sharedSDK;
 
-- (BOOL)start;
+- (BOOL)startWithArgc:(int)argc andArgv:(char**)argv;
 - (BOOL)stop;
 - (BOOL)fetchRSS;
 

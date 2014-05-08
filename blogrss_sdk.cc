@@ -2,6 +2,7 @@
 #include "http_request.h"
 #include "thread_manager.h"
 #include "rss_xml_analyzer.h"
+#include "env_init.h"
 
 #define RSS_URL "http://geekluo.com/feed.xml"
 
@@ -23,10 +24,14 @@ BlogRSSSDK::BlogRSSSDK()
 BlogRSSSDK::~BlogRSSSDK() {
 
 }
-    
-bool BlogRSSSDK::Start() {
-  DCHECK(MessageLoop::current()->type() == MessageLoop::TYPE_UI);
+
+bool BlogRSSSDK::StartWithoutEnvInit() {
   return ThreadManager::GetInstance()->InitalizeThreads();
+}
+    
+bool BlogRSSSDK::Start(int argc, char** argv) {
+  EnvInit::InitializeEnvironment(argc, argv);
+  return StartWithoutEnvInit();
 }
 
 bool BlogRSSSDK::FetchRSS() {
