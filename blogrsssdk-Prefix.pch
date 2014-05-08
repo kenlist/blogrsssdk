@@ -8,8 +8,25 @@
     #import <Foundation/Foundation.h>
 #endif
 
+#include <string>
+#include <ctime>
+
+#include <libxml/xmlreader.h>
+#include <libxml/xmlwriter.h>
+
+#include "base/memory/scoped_ptr.h"
+#include "base/memory/weak_ptr.h"
+
+#include "base/bind.h"
 #include "base/at_exit.h"
 #include "base/basictypes.h"
 #include "base/memory/singleton.h"
 #include "base/threading/thread.h"
+#include "base/thread_task_runner_handle.h"
 #include "base/message_loop/message_loop.h"
+#include "base/message_loop/message_pump_default.h"
+
+#include "net/url_request/url_request_context.h"
+#include "net/url_request/url_request_context_builder.h"
+#include "net/url_request/url_request.h"
+

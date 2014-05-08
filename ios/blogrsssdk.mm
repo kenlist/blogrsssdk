@@ -1,16 +1,19 @@
 //
 //  blogrsssdk.h
-//  blogrsssdk
+//  blogrsssdk-ios
 //
 //  Created by 罗 日健 on 5/4/14.
 //  Copyright (c) 2014 kenlist. All rights reserved.
 //
 
 #import "blogrsssdk.h"
-#import "blogrsssdk/blogrss_session.h"
+#import "blogrss_responser.h"
+#import "blogrsssdk/blogrss_sdk.h"
+#import "blogrsssdk/blogrss_sdk_delegate.h"
 
 @interface BlogRSSSDK() {
-  base::AtExitManager *pExit_manager;
+  scoped_ptr<base::AtExitManager> exit_manager;
+  scoped_ptr<BlogRSSResponser> responser;
 }
 @end
 
@@ -25,41 +28,26 @@
   return sdk;
 }
 
-- (void)dealloc {
-  if (pExit_manager) {
-    delete pExit_manager;
-    pExit_manager = NULL;
-  }
-  [super dealloc];
-}
-
-- (id)init {
-  self = [super init];
-  if (self) {
-    pExit_manager = NULL;
-  }
-  return self;
-}
-
 - (BOOL)start {
-  if (pExit_manager) {
+  if (exit_manager) {
     return NO;
   }
-  pExit_manager = new base::AtExitManager();
-  return blogrss::BlogRSSSession::GetInstance()->Start();
+  exit_manager.reset(new base::AtExitManager);
+  responser.reset(new BlogRSSResponser);
+  blogrss::BlogRSSSDK::GetInstance()->set_delegate(responser->AsWeakPtr());
+  return blogrss::BlogRSSSDK::GetInstance()->Start();
 }
 
 - (BOOL)stop {
-  if (!pExit_manager) {
+  if (!exit_manager) {
     return NO;
   }
-  delete pExit_manager;
-  pExit_manager = NULL;
+  exit_manager.reset();
   return YES;
 }
 
 - (BOOL)fetchRSS {
-  
+  return blogrss::BlogRSSSDK::GetInstance()->FetchRSS();
 }
 
 @end

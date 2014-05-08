@@ -1,6 +1,6 @@
 //
 //  blogrsssdk.h
-//  blogrsssdk
+//  blogrsssdk-ios
 //
 //  Created by 罗 日健 on 5/4/14.
 //  Copyright (c) 2014 kenlist. All rights reserved.
@@ -10,7 +10,7 @@
 
 //BlogRSSSDKDelegate
 @protocol BlogRSSSDKDelegate <NSObject>
-- (void)onRSSFetchedWithData:(NSArray *)rssData andIsSuccess:(BOOL)bSuccess;
+- (void)onRSSFetchedWithRetCode:(int)retCode andRSSInfo:(NSArray *)rssData;
 @end
 
 //BlogRSSSDK
