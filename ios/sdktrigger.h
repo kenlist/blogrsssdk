@@ -10,7 +10,7 @@
 #import "blogrss_responser.h"
 #import "rssinfoitem.h"
 
-@interface SDKTrigger
+@interface SDKTrigger : NSObject
 
 + (void)TriggerRSSFetchedWithRetCode:(int)ret_code andRSSItems:(NSArray *)rss_items;
 
