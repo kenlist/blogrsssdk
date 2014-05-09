@@ -41,6 +41,11 @@ bool HttpRequest::StartWithURL(const std::string& url_string, const CompleteCall
 void HttpRequest::ActualStartOnNetThread() {
   DCHECK(MessageLoop::current()->type() == MessageLoop::TYPE_IO);
   
+  if (request_) {
+    //must clear request first
+    request_.reset();
+  }
+  
   context_.reset(builder_.Build());
   request_.reset(new URLRequest(url_, RequestPriority::DEFAULT_PRIORITY, this, context_.get()));
   request_->set_method("GET");
@@ -82,6 +87,7 @@ bool HttpRequest::ConsumeBytesRead(net::URLRequest* request, int num_bytes) {
 void HttpRequest::OnResponseStarted(URLRequest* request) {
   DCHECK(MessageLoop::current()->type() == MessageLoop::TYPE_IO);
 
+  bytes_read_so_far_.clear();
   if (request->GetResponseCode() != 200) {
     complete_callback_.Run(request->GetResponseCode(), "response code error");
     return;
