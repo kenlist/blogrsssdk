@@ -10,7 +10,7 @@ class RSSXMLAnalyzer {
     RSSXMLAnalyzer();
     ~RSSXMLAnalyzer();
   
-    scoped_ptr<RSSInfo> AnaylzeRSSInfo(const std::string& xml_string);
+    RSSInfo AnaylzeRSSInfo(const std::string& xml_string);
 };
 
 }

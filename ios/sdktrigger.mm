@@ -11,10 +11,10 @@
 
 @implementation SDKTrigger
 
-+ (void)TriggerRSSFetchedWithRetCode:(int)ret_code andRSSInfo:(NSArray *)rss_info {
++ (void)TriggerRSSFetchedWithRetCode:(int)ret_code andRSSItems:(NSArray *)rss_items {
   id<BlogRSSSDKDelegate> delegate = [BlogRSSSDK sharedSDK].delegate;
   if (delegate) {
-    [delegate onRSSFetchedWithRetCode:ret_code andRSSInfo:rss_info];
+    [delegate onRSSFetchedWithRetCode:ret_code andRSSItems:rss_items];
   }
 }
 

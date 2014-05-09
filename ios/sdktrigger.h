@@ -12,6 +12,6 @@
 
 @interface SDKTrigger
 
-+ (void)TriggerRSSFetchedWithRetCode:(int)ret_code andRSSInfo:(NSArray *)rss_info;
++ (void)TriggerRSSFetchedWithRetCode:(int)ret_code andRSSItems:(NSArray *)rss_items;
 
 @end

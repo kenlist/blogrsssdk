@@ -11,7 +11,7 @@ public:
   BlogRSSResponser();
   ~BlogRSSResponser();
   
-  void OnRSSFetched(int ret_code, blogrss::RSSInfo* rss_info);
+  void OnRSSFetched(int ret_code, blogrss::RSSInfo rss_info);
 
 };
 

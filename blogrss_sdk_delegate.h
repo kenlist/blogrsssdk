@@ -7,7 +7,7 @@ namespace blogrss {
 
 class BlogRSSSDKDelegate {
   public:
-    virtual void OnRSSFetched(int ret_code, RSSInfo* rss_info) = 0;
+    virtual void OnRSSFetched(int ret_code, RSSInfo rss_info) = 0;
 };
 
 }

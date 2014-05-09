@@ -10,7 +10,7 @@
 
 //BlogRSSSDKDelegate
 @protocol BlogRSSSDKDelegate <NSObject>
-- (void)onRSSFetchedWithRetCode:(int)retCode andRSSInfo:(NSArray *)rssData;
+- (void)onRSSFetchedWithRetCode:(int)retCode andRSSItems:(NSArray *)rssItems;
 @end
 
 //BlogRSSSDK

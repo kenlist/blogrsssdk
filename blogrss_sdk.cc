@@ -56,7 +56,7 @@ void BlogRSSSDK::OnFetchRSS(int ret_code, const std::string& response_data) {
 void BlogRSSSDK::FireRSSFetchedOnUI() {
   DCHECK(MessageLoop::current()->type() == MessageLoop::TYPE_UI);
   if (delegate_) {
-    delegate_->OnRSSFetched(ret_code_, rss_info_.release());
+    delegate_->OnRSSFetched(ret_code_, rss_info_.Pass());
   }
   ret_code_ = 0;
 }

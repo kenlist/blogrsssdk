@@ -12,7 +12,7 @@
 #include <ctime>
 
 #include <libxml/xmlreader.h>
-#include <libxml/xmlwriter.h>
+#include <libxml/xpath.h>
 
 #include "base/memory/scoped_ptr.h"
 #include "base/memory/weak_ptr.h"
