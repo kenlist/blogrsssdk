@@ -16,6 +16,9 @@
     {
       'target_name': 'blogrsssdk-unittest',
       'type': '<(gtest_target_type)',
+      'variables': {
+        'sdk_target': 1,
+      },
       'dependencies': [
         '../base/base.gyp:test_support_base',
         '../testing/gmock.gyp:gmock',
@@ -37,6 +40,9 @@
       'target_name': 'blogrsssdk',
       'type': 'loadable_module',
       'mac_bundle': 1,
+      'variables': {
+        'sdk_target': 1,
+      },
       'mac_framework_headers': [
         'ios/blogrsssdk.h',
         'ios/rssinfoitem.h',
