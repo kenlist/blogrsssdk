@@ -3,11 +3,11 @@
     'variables': {
       'sdk_target': 0,
     },
+    'dependencies': [
+      '../net/net.gyp:net',
+    ],
     'target_conditions': [
       ['sdk_target==1', {
-        'dependencies': [
-          '../net/net.gyp:net',
-        ],
         'include_dirs': [
           '/usr/include/libxml2'
         ],
