@@ -1,6 +1,6 @@
 {
   'includes': [
-    'blogrsssdk.gypi',
+    'blogrsssdk.gypi' ,
   ],
   'target_defaults': {
 
@@ -25,6 +25,9 @@
       'variables': {
         'sdk_target': 1,
       },
+      'include_files': [
+        'blogrsssdk-Prefix.pch'
+      ],
     }
   ],
 }

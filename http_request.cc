@@ -47,7 +47,7 @@ void HttpRequest::ActualStartOnNetThread() {
   }
   
   context_.reset(builder_.Build());
-  request_.reset(new URLRequest(url_, RequestPriority::DEFAULT_PRIORITY, this, context_.get()));
+  request_.reset(new URLRequest(url_, DEFAULT_PRIORITY, this, context_.get()));
   request_->set_method("GET");
   request_->Start();
 }

@@ -5,6 +5,7 @@
     },
     'dependencies': [
       '../net/net.gyp:net',
+      '../third_party/libxml/libxml.gyp:libxml',
     ],
     'target_conditions': [
       ['sdk_target==1', {

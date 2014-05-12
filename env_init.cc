@@ -6,7 +6,7 @@ bool EnvInit::InitializeEnvironment(int argc, char** argv) {
   base::CommandLine::Init(argc, argv);
 
 #if defined(OS_ANDROID)
-  InitAndroidTest();
+  
 #else
   // Initialize logging.
   base::FilePath exe;

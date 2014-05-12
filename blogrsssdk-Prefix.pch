@@ -11,8 +11,9 @@
 #include <string>
 #include <ctime>
 
-#include <libxml/xmlreader.h>
-#include <libxml/xpath.h>
+#include "libxml/xmlreader.h"
+#include "libxml/xmlwriter.h"
+#include "libxml/xpath.h"
 
 #include "base/memory/scoped_ptr.h"
 #include "base/memory/weak_ptr.h"
@@ -30,6 +31,7 @@
 #include "base/message_loop/message_pump_default.h"
 #include "base/i18n/icu_util.h"
 
+#include "net/base/request_priority.h"
 #include "net/url_request/url_request_context.h"
 #include "net/url_request/url_request_context_builder.h"
 #include "net/url_request/url_request.h"
