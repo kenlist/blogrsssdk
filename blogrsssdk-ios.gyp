@@ -28,7 +28,6 @@
         'libraries': [
           '$(SDKROOT)/usr/lib/libstdc++.dylib',
           '$(SDKROOT)/usr/lib/libSystem.dylib',
-          '$(SDKROOT)/usr/lib/libxml2.dylib',
         ],
       },
       'sources': [

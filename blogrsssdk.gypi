@@ -9,9 +9,6 @@
     ],
     'target_conditions': [
       ['sdk_target==1', {
-        'include_dirs': [
-          '/usr/include/libxml2'
-        ],
         'sources': [
           'blogrsssdk-Prefix.pch',
           'blogrss_sdk.h',
