@@ -10,14 +10,9 @@ using namespace base;
 using namespace net;
 
 namespace blogrss {
-  
-BlogRSSSDK* BlogRSSSDK::GetInstance() {
-  return Singleton<BlogRSSSDK>::get();
-}
 
 BlogRSSSDK::BlogRSSSDK()
     : analyzer_(new RSSXMLAnalyzer) {
-  this->AddRef(); //never release by refptr
   request_ = scoped_refptr<HttpRequest>(new HttpRequest);
 }
 

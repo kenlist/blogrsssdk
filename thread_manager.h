@@ -4,12 +4,12 @@
 namespace blogrss {
     
 class ThreadManager {
-  public:
-    static ThreadManager* GetInstance();
-    
+  friend class DefaultSingletonTraits<ThreadManager>;
+  private:
     ThreadManager();
     ~ThreadManager();
-    
+  public:
+    static ThreadManager* GetInstance();
     bool InitalizeThreads();
     
     base::MessageLoop* ui_loop() const { return ui_loop_; }

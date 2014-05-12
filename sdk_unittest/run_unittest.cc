@@ -23,7 +23,6 @@ int main(int argc, char** argv) {
   file_util::RegisterCounentUriTestUtils(env);
 #else
   AtExitManager at_exit;
-  blogrss::BlogRSSSDK::GetInstance()->StartWithoutEnvInit();
 #endif
   return LaunchUnitTests(argc,
                          argv,

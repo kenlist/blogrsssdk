@@ -6,10 +6,6 @@
 using namespace base;
 
 namespace blogrss {
-
-ThreadManager* ThreadManager::GetInstance() {
-  return Singleton<ThreadManager>().get();
-}
     
 ThreadManager::ThreadManager()
   : ui_loop_(NULL),
@@ -18,6 +14,10 @@ ThreadManager::ThreadManager()
 }
 
 ThreadManager::~ThreadManager() {
+}
+
+ThreadManager* ThreadManager::GetInstance() {
+  return Singleton<ThreadManager>().get();
 }
 
 bool ThreadManager::InitalizeThreads() {

@@ -8,9 +8,7 @@ namespace blogrss {
 class HttpRequest;
 class RSSXMLAnalyzer;
 class BlogRSSSDK : public base::RefCountedThreadSafe<BlogRSSSDK> {
-  public:
-    static BlogRSSSDK* GetInstance();
-    
+  public:    
     BlogRSSSDK();
     ~BlogRSSSDK();
   

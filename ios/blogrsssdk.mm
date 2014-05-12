@@ -12,6 +12,7 @@
 #import "blogrsssdk/blogrss_sdk_delegate.h"
 
 @interface BlogRSSSDK() {
+  scoped_refptr<blogrss::BlogRSSSDK> blogrss_sdk;
   scoped_ptr<base::AtExitManager> exit_manager;
   scoped_ptr<BlogRSSResponser> responser;
 }
@@ -29,13 +30,14 @@
 }
 
 - (BOOL)startWithArgc:(int)argc andArgv:(char**)argv {
-  if (exit_manager) {
+  if (blogrss_sdk || exit_manager || responser) {
     return NO;
   }
+  blogrss_sdk = new blogrss::BlogRSSSDK;
   exit_manager.reset(new base::AtExitManager);
   responser.reset(new BlogRSSResponser);
-  blogrss::BlogRSSSDK::GetInstance()->set_delegate(responser->AsWeakPtr());
-  return blogrss::BlogRSSSDK::GetInstance()->Start(argc, argv);
+  blogrss_sdk->set_delegate(responser->AsWeakPtr());
+  return blogrss_sdk->Start(argc, argv);
 }
 
 - (BOOL)stop {
@@ -47,7 +49,7 @@
 }
 
 - (BOOL)fetchRSS {
-  return blogrss::BlogRSSSDK::GetInstance()->FetchRSS();
+  return blogrss_sdk->FetchRSS();
 }
 
 @end

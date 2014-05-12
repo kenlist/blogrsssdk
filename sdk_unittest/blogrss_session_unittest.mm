@@ -11,7 +11,9 @@ class BlogRSSSessionTest :public testing::Test {
 };
 
 TEST_F(BlogRSSSessionTest, FetchRSS) {
-  BlogRSSSDK::GetInstance()->FetchRSS();
+  scoped_refptr<blogrss::BlogRSSSDK> blogrss_sdk = new blogrss::BlogRSSSDK;
+  blogrss_sdk->StartWithoutEnvInit();
+  blogrss_sdk->FetchRSS();
   
   //CFRunLoopStop([[NSRunLoop currentRunLoop] getCFRunLoop]);
   [[NSRunLoop currentRunLoop] run];
