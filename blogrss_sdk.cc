@@ -39,7 +39,7 @@ void BlogRSSSDK::OnFetchRSS(int ret_code, const std::string& response_data) {
  
   ret_code_ = ret_code;
   if (ret_code == 200) {
-    rss_info_ = analyzer_->AnaylzeRSSInfo(response_data);
+    rss_item_list_ = analyzer_->AnaylzeRSSInfo(response_data);
   }
   
   //fire delegate on ui_thread
@@ -51,7 +51,7 @@ void BlogRSSSDK::OnFetchRSS(int ret_code, const std::string& response_data) {
 void BlogRSSSDK::FireRSSFetchedOnUI() {
   DCHECK(MessageLoop::current()->type() == MessageLoop::TYPE_UI);
   if (delegate_) {
-    delegate_->OnRSSFetched(ret_code_, rss_info_.Pass());
+    delegate_->OnRSSFetched(ret_code_, rss_item_list_.Pass());
   }
   ret_code_ = 0;
 }

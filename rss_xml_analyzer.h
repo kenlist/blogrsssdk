@@ -1,7 +1,7 @@
 #ifndef RSS_XML_ANALYZER_H_
 #define RSS_XML_ANALYZER_H_
 
-#include "rss_info.h"
+#include "rss_item.h"
 
 namespace blogrss {
 
@@ -10,7 +10,7 @@ class RSSXMLAnalyzer {
     RSSXMLAnalyzer();
     ~RSSXMLAnalyzer();
   
-    RSSInfo AnaylzeRSSInfo(const std::string& xml_string);
+    RSSItemList AnaylzeRSSInfo(const std::string& xml_string);
 };
 
 }

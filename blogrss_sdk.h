@@ -30,7 +30,7 @@ class BlogRSSSDK : public base::RefCountedThreadSafe<BlogRSSSDK> {
     scoped_ptr<RSSXMLAnalyzer> analyzer_;
   
     int ret_code_;
-    RSSInfo rss_info_;
+    RSSItemList rss_item_list_;
   
     DISALLOW_COPY_AND_ASSIGN(BlogRSSSDK);
 };

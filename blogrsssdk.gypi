@@ -14,7 +14,7 @@
           'blogrss_sdk.h',
           'blogrss_sdk.cc',
           'blogrss_sdk_delegate.h',
-          'rss_info.h',
+          'rss_item.h',
           'rss_xml_analyzer.h',
           'rss_xml_analyzer.cc',
           'http_request.h',
