@@ -38,13 +38,9 @@ RSSItemList RSSXMLAnalyzer::AnaylzeRSSInfo(const string& xml_string) {
         if (xmlStrEqual(child_node->name, BAD_CAST"title")) {
           content = xmlNodeGetContent(child_node);
           rss_item->title = (char*)content;
-        } else if (xmlStrEqual(child_node->name, BAD_CAST"pubDate")) {
-          time_t t = time(NULL);
-          char buf[100];
-          strftime(buf, sizeof(buf), "%a, %d %b %Y %H:%M:%S %z", localtime(&t));
-        
+        } else if (xmlStrEqual(child_node->name, BAD_CAST"pubDate")) {        
           content = xmlNodeGetContent(child_node);
-          DCHECK(strptime((const char*)content, "%a, %d %b %Y %H:%M:%S %z", &rss_item->pub_date));
+          strptime((const char*)content, "%a, %d %b %Y %H:%M:%S %z", &rss_item->pub_date);
         } else if (xmlStrEqual(child_node->name, BAD_CAST"link")) {
           content = xmlNodeGetContent(child_node);
           rss_item->link = (char*)content;

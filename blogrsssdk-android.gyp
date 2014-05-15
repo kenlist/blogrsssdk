@@ -55,6 +55,9 @@
       'includes': [
         '../build/java.gypi',
       ],
+      'sources': [
+        'android/src/org/blogrsssdk/BlogRSSSDKDelegate.java',
+      ],
     },
   ],
 }

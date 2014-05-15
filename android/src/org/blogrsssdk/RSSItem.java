@@ -8,9 +8,9 @@ import java.util.Date;
 
 @JNINamespace("blogrss")
 public class RSSItem {
-    private final String title;
-    private final Date pubDate;
-    private final String link;
+    public final String title;
+    public final Date pubDate;
+    public final String link;
 
     private RSSItem(String t, Date d, String l) {
         title = t;
@@ -20,7 +20,7 @@ public class RSSItem {
 
     @CalledByNative
     private static RSSItem create(String t, long dateTimeSine1970, String l) {
-        Date dt = new Date(dateTimeSine1970);
+        Date dt = new Date(dateTimeSine1970 * 1000);
         return new RSSItem(t, dt, l);
     }
 }

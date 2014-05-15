@@ -1,6 +1,6 @@
 package org.blogrsssdk;
 
-import android.graphics.Rect;
+import android.content.Context;
 
 import org.chromium.base.CalledByNative;
 import org.chromium.base.JNINamespace;
@@ -10,20 +10,13 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.blogrsssdk.RSSItem;
-
-interface BlogRSSSDKDelegate {
-    void onRSSFetchedWithRetCode(int retCode, RSSItem[] rssItem);
-}
+import org.blogrsssdk.BlogRSSSDKDelegate;
 
 @JNINamespace("blogrss")
 public class BlogRSSSDK {
     private static BlogRSSSDK sInstance = null;
     private long mNativeSDKObject = 0;
     private BlogRSSSDKDelegate mDelegate = null;
-
-    static {
-        System.loadLibrary("blogrsssdk");
-    }
 
     public static BlogRSSSDK getInstance() {
         if (sInstance == null) {
@@ -33,6 +26,7 @@ public class BlogRSSSDK {
     }
 
     private BlogRSSSDK() {
+        System.loadLibrary("blogrsssdk");
         mNativeSDKObject = nativeNewInstance(this);
     }
 
@@ -40,8 +34,8 @@ public class BlogRSSSDK {
         nativeDestroy(mNativeSDKObject);
     }
 
-    public void start() {
-        nativeStart(mNativeSDKObject);
+    public void start(Context context) {
+        nativeStart(mNativeSDKObject, context);
     }
 
     public void stop() {
@@ -65,7 +59,7 @@ public class BlogRSSSDK {
   
     private native long nativeNewInstance(Object javaSDKObject);
     private native void nativeDestroy(long nativeBlogRSSSDKJni);
-    private native boolean nativeStart(long nativeBlogRSSSDKJni);
+    private native boolean nativeStart(long nativeBlogRSSSDKJni, Context context);
     private native boolean nativeStop(long nativeBlogRSSSDKJni);
     private native boolean nativeFetchRSS(long nativeBlogRSSSDKJni);
 }

@@ -11,7 +11,6 @@ const int kDefaultMaxResponseBytes = 1048576;   // 1 megabyte
   
 HttpRequest::HttpRequest()
     : buf_(new IOBuffer(kBufSize)) {
-
 }
 
 HttpRequest::~HttpRequest() {
@@ -45,6 +44,11 @@ void HttpRequest::ActualStartOnNetThread() {
     //must clear request first
     request_.reset();
   }
+  
+#if defined(OS_LINUX) || defined(OS_ANDROID)
+  builder_.set_proxy_config_service(
+      new ProxyConfigServiceFixed(ProxyConfig::CreateDirect()));
+#endif
   
   context_.reset(builder_.Build());
   request_.reset(new URLRequest(url_, DEFAULT_PRIORITY, this, context_.get()));

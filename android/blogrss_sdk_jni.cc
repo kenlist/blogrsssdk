@@ -15,15 +15,22 @@ namespace blogrss {
 
 jlong NewInstance(JNIEnv* env, jobject jcaller,
     jobject javaSDKObject) {
+
   JavaObjectWeakGlobalRef weak_java_ref = 
       JavaObjectWeakGlobalRef(env, javaSDKObject);
-  return reinterpret_cast<jlong>(new BlogRSSSDKJni(weak_java_ref));
+  BlogRSSSDKJni *sdk_jni = new BlogRSSSDKJni(weak_java_ref);
+
+  //use singleton after BlogRSSSDKJni initialized.
+  JavaSingleton::GetInstance()->set_env(env);
+
+  return reinterpret_cast<jlong>(sdk_jni);
 }
 
 BlogRSSSDKJni::BlogRSSSDKJni(JavaObjectWeakGlobalRef weak_java_ref) {
   weak_java_ref_ = weak_java_ref;
   blogrss_sdk_ = new BlogRSSSDK();
   blogrss_sdk_->set_delegate(this->AsWeakPtr());
+  exit_manager_.reset(new AtExitManager);
 }
 
 BlogRSSSDKJni::~BlogRSSSDKJni() {
@@ -33,11 +40,9 @@ void BlogRSSSDKJni::Destroy(JNIEnv* env, jobject obj) {
   delete this;
 }
 
-jboolean BlogRSSSDKJni::Start(JNIEnv* env, jobject obj) {
-  if (exit_manager_)
-    return false;
-
-  exit_manager_.reset(new AtExitManager);
+jboolean BlogRSSSDKJni::Start(JNIEnv* env, jobject obj, jobject jcontext) {
+  ScopedJavaLocalRef<jobject> scoped_context(env, jcontext);
+  InitApplicationContext(env, scoped_context);
   return blogrss_sdk_->Start(0, NULL);
 }
 

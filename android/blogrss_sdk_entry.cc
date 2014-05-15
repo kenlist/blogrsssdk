@@ -1,8 +1,9 @@
 #include "base/android/jni_android.h"
 #include "base/android/jni_registrar.h"
+#include "base/android/base_jni_registrar.h"
+#include "net/android/net_jni_registrar.h"
 #include "blogrss_sdk_jni.h"
 #include "rssitem_jni.h"
-#include "java_singleton.h"
 
 #define DEBUG 0
 
@@ -33,7 +34,16 @@ JNI_EXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
   }
 
   base::android::InitVM(vm);
-  JavaSingleton::GetInstance()->set_env(env);
+
+  if (!base::android::RegisterJni(env)) {
+    LOG_ERROR("base::android::RegisterJni error");
+    return -1;
+  }
+
+  if (!net::android::RegisterJni(env)) {
+    LOG_ERROR("net::android::RegisterJni error");
+    return -1;
+  }
 
   if (!base::android::RegisterNativeMethods(
           env, kBlogRSSSDKRegisteredMethods,

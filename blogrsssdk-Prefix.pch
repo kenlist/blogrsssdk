@@ -36,3 +36,6 @@
 #include "net/url_request/url_request_context_builder.h"
 #include "net/url_request/url_request.h"
 
+#include "net/proxy/proxy_config.h"
+#include "net/proxy/proxy_config_service_fixed.h"
+

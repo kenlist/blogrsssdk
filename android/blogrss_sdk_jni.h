@@ -22,7 +22,7 @@ class BlogRSSSDKJni
     ~BlogRSSSDKJni();
 
     void Destroy(JNIEnv* env, jobject obj);
-    jboolean Start(JNIEnv* env, jobject obj);
+    jboolean Start(JNIEnv* env, jobject obj, jobject jcontext);
     jboolean Stop(JNIEnv* env, jobject obj);
     jboolean FetchRSS(JNIEnv* env, jobject obj);
 
